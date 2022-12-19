@@ -26,6 +26,7 @@ public class WikimediaStreamEventHandler implements EventHandler {
     @Override
     public void onClosed() throws Exception {
         log.info("stream connection has been closed");
+        producer.close();
     }
 
     @Override
