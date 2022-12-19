@@ -26,6 +26,7 @@ public class WikimediaStreamDataProducer {
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
         EventHandler eventHandler = new WikimediaStreamEventHandler(producer, topic);
         EventSource eventSource = new EventSource.Builder(eventHandler, URI.create(url))
+                .proxy("127.0.0.1", 10809) // wiki国内不能直连
                 .build();
         eventSource.start();
 
