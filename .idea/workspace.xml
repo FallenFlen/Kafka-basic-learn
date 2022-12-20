@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="add proxy">
+    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="make producer perfect">
+      <change afterPath="$PROJECT_DIR$/opensearch-consumer/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opensearch-consumer/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wikimedia-producer/src/main/java/com/flz/kafka/wikimedia/producer/WikimediaStreamDataProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/wikimedia-producer/src/main/java/com/flz/kafka/wikimedia/producer/WikimediaStreamDataProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +150,7 @@
       <workItem from="1670569304063" duration="8287000" />
       <workItem from="1670670699958" duration="151000" />
       <workItem from="1671452435087" duration="5179000" />
-      <workItem from="1671534711262" duration="1364000" />
+      <workItem from="1671534711262" duration="2676000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1670494032155</created>
@@ -205,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671458604865</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="make producer perfect">
+      <created>1671542917223</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671542917223</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +242,8 @@
     <MESSAGE value="build wikimedia producer demo" />
     <MESSAGE value="close producer when closing stream" />
     <MESSAGE value="add proxy" />
-    <option name="LAST_COMMIT_MESSAGE" value="add proxy" />
+    <MESSAGE value="make producer perfect" />
+    <option name="LAST_COMMIT_MESSAGE" value="make producer perfect" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
