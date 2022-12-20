@@ -20,6 +20,9 @@ public class WikimediaStreamDataProducer {
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.39.233:9092");
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "20");
+        properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, String.valueOf(32 * 1024));// 32kb
+        properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
         String topic = "wikimedia-stream-data";
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
