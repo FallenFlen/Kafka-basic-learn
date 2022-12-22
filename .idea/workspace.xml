@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="make producer perfect">
-      <change afterPath="$PROJECT_DIR$/opensearch-consumer/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/opensearch-consumer/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="init consumer project">
+      <change afterPath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opensearch-consumer/docker-compose.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
       <recent name="com.flz.kafka.basic" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WikimediaStreamDataProducer">
+  <component name="RunManager" selected="Application.OpenSearchConsumer">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flz.kafka.basic.ConsumerDemo" />
       <module name="kafka-basic-learn.kafka-basic.main" />
@@ -102,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProduceWithKeyDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flz.kafka.basic.ProduceWithKeyDemo" />
-      <module name="kafka-basic-learn.kafka-basic.main" />
+    <configuration name="OpenSearchConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flz.kafka.opensearch.consumer.OpenSearchConsumer" />
+      <module name="kafka-basic-learn.opensearch-consumer.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.flz.kafka.basic.*" />
+          <option name="PATTERN" value="com.flz.kafka.opensearch.consumer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OpenSearchConsumer" />
         <item itemvalue="Application.WikimediaStreamDataProducer" />
         <item itemvalue="Application.ConsumerRebalanceDemo" />
         <item itemvalue="Application.ConsumerWithShutdownHookDemo" />
         <item itemvalue="Application.ConsumerDemo" />
-        <item itemvalue="Application.ProduceWithKeyDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +148,8 @@
       <workItem from="1670569304063" duration="8287000" />
       <workItem from="1670670699958" duration="151000" />
       <workItem from="1671452435087" duration="5179000" />
-      <workItem from="1671534711262" duration="2676000" />
+      <workItem from="1671534711262" duration="3322000" />
+      <workItem from="1671712231101" duration="2830000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1670494032155</created>
@@ -215,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671542917223</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="init consumer project">
+      <created>1671544252491</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671544252491</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +249,8 @@
     <MESSAGE value="close producer when closing stream" />
     <MESSAGE value="add proxy" />
     <MESSAGE value="make producer perfect" />
-    <option name="LAST_COMMIT_MESSAGE" value="make producer perfect" />
+    <MESSAGE value="init consumer project" />
+    <option name="LAST_COMMIT_MESSAGE" value="init consumer project" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
