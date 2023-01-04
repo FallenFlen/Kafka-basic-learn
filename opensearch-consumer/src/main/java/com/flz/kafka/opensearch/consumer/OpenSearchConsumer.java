@@ -21,6 +21,7 @@ import org.opensearch.common.xcontent.XContentType;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -35,11 +36,7 @@ public class OpenSearchConsumer {
                 ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(Duration.ofMillis(5000));
                 for (ConsumerRecord<String, String> consumerRecord : consumerRecords) {
                     String value = consumerRecord.value();
-                    IndexRequest indexRequest = new IndexRequest(index)
-                            .id(getMessageId(value))
-                            .source(value, XContentType.JSON);
-                    IndexResponse indexResponse = openSearchClient.index(indexRequest, RequestOptions.DEFAULT);
-                    log.info("create 1 doc:{}", indexResponse.getId());
+                    handleMessage(openSearchClient, index, value);
                 }
                 kafkaConsumer.commitSync();
                 log.info("offset manual committed");
@@ -48,13 +45,32 @@ public class OpenSearchConsumer {
         }
     }
 
+    private static void handleMessage(RestHighLevelClient openSearchClient, String value, String index) {
+        Optional.ofNullable(getMessageId(value))
+                .ifPresent((id) -> {
+                    try {
+                        IndexRequest indexRequest = new IndexRequest(index)
+                                .id(id)
+                                .source(value, XContentType.JSON);
+                        IndexResponse indexResponse = openSearchClient.index(indexRequest, RequestOptions.DEFAULT);
+                        log.info("create 1 doc:{}", indexResponse.getId());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+    }
+
     private static String getMessageId(String json) {
-        return JsonParser.parseString(json)
-                .getAsJsonObject()
-                .get("meta")
-                .getAsJsonObject()
-                .get("id")
-                .getAsString();
+        try {
+            return JsonParser.parseString(json)
+                    .getAsJsonObject()
+                    .get("meta")
+                    .getAsJsonObject()
+                    .get("id")
+                    .getAsString();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private static KafkaConsumer<String, String> createKafkaConsumer() {

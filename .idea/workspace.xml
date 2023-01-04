@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="consume with ideponent">
+    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="manual commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +153,7 @@
       <workItem from="1671534711262" duration="3322000" />
       <workItem from="1671712231101" duration="2850000" />
       <workItem from="1671951334254" duration="12000" />
-      <workItem from="1672832852625" duration="2055000" />
+      <workItem from="1672832852625" duration="2733000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1670494032155</created>
@@ -238,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672834609516</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="manual commit">
+      <created>1672837620871</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672837620871</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +277,8 @@
     <MESSAGE value="init consumer project" />
     <MESSAGE value="consume message and put them into opensearch" />
     <MESSAGE value="consume with ideponent" />
-    <option name="LAST_COMMIT_MESSAGE" value="consume with ideponent" />
+    <MESSAGE value="manual commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="manual commit" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
