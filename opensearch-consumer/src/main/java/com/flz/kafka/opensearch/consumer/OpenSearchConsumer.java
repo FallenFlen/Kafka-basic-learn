@@ -1,5 +1,6 @@
 package com.flz.kafka.opensearch.consumer;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
@@ -8,8 +9,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.opensearch.action.bulk.BulkRequest;
+import org.opensearch.action.bulk.BulkResponse;
 import org.opensearch.action.index.IndexRequest;
-import org.opensearch.action.index.IndexResponse;
 import org.opensearch.client.RequestOptions;
 import org.opensearch.client.RestClient;
 import org.opensearch.client.RestHighLevelClient;
@@ -21,6 +23,7 @@ import org.opensearch.common.xcontent.XContentType;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -34,30 +37,30 @@ public class OpenSearchConsumer {
             KafkaConsumer<String, String> kafkaConsumer = createKafkaConsumer();
             while (true) {
                 ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(Duration.ofMillis(5000));
-                for (ConsumerRecord<String, String> consumerRecord : consumerRecords) {
-                    String value = consumerRecord.value();
-                    handleMessage(openSearchClient, index, value);
+                BulkRequest bulkRequest = new BulkRequest();
+                ImmutableList.copyOf(consumerRecords.iterator()).stream()
+                        .map(ConsumerRecord::value)
+                        .map((value) -> resolveMessage(value, index))
+                        .filter(Objects::nonNull)
+                        .forEach(bulkRequest::add);
+                if (bulkRequest.numberOfActions() > 0) {
+                    BulkResponse bulkResponse = openSearchClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+                    log.info("consumer batch message with length {} and save into open search", bulkResponse.getItems().length);
+                    kafkaConsumer.commitSync();
+                    log.info("offset manual committed");
                 }
-                kafkaConsumer.commitSync();
-                log.info("offset manual committed");
                 TimeUnit.MILLISECONDS.sleep(1500L);
             }
         }
     }
 
-    private static void handleMessage(RestHighLevelClient openSearchClient, String value, String index) {
-        Optional.ofNullable(getMessageId(value))
-                .ifPresent((id) -> {
-                    try {
-                        IndexRequest indexRequest = new IndexRequest(index)
-                                .id(id)
-                                .source(value, XContentType.JSON);
-                        IndexResponse indexResponse = openSearchClient.index(indexRequest, RequestOptions.DEFAULT);
-                        log.info("create 1 doc:{}", indexResponse.getId());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+    private static IndexRequest resolveMessage(String value, String index) {
+        return Optional.ofNullable(getMessageId(value))
+                .map((id) -> new IndexRequest(index)
+                        .id(id)
+                        .source(value, XContentType.JSON)
+                )
+                .orElse(null);
     }
 
     private static String getMessageId(String json) {
