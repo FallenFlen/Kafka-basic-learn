@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="init consumer project">
-      <change afterPath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" afterDir="false" />
+    <list default="true" id="cba7d868-0cc7-47a4-8a0d-7cf6df5a3963" name="Changes" comment="consume message and put them into opensearch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensearch-consumer/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opensearch-consumer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/opensearch-consumer/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/opensearch-consumer/src/main/java/com/flz/kafka/opensearch/consumer/OpenSearchConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
       <recent name="com.flz.kafka.basic" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OpenSearchConsumer">
+  <component name="RunManager" selected="Application.WikimediaStreamDataProducer">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flz.kafka.basic.ConsumerDemo" />
       <module name="kafka-basic-learn.kafka-basic.main" />
@@ -128,8 +128,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OpenSearchConsumer" />
         <item itemvalue="Application.WikimediaStreamDataProducer" />
+        <item itemvalue="Application.OpenSearchConsumer" />
         <item itemvalue="Application.ConsumerRebalanceDemo" />
         <item itemvalue="Application.ConsumerWithShutdownHookDemo" />
         <item itemvalue="Application.ConsumerDemo" />
@@ -149,7 +149,9 @@
       <workItem from="1670670699958" duration="151000" />
       <workItem from="1671452435087" duration="5179000" />
       <workItem from="1671534711262" duration="3322000" />
-      <workItem from="1671712231101" duration="2830000" />
+      <workItem from="1671712231101" duration="2850000" />
+      <workItem from="1671951334254" duration="12000" />
+      <workItem from="1672832852625" duration="1155000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1670494032155</created>
@@ -221,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671544252491</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="consume message and put them into opensearch">
+      <created>1671719223059</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671719223059</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +259,8 @@
     <MESSAGE value="add proxy" />
     <MESSAGE value="make producer perfect" />
     <MESSAGE value="init consumer project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init consumer project" />
+    <MESSAGE value="consume message and put them into opensearch" />
+    <option name="LAST_COMMIT_MESSAGE" value="consume message and put them into opensearch" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package com.flz.kafka.opensearch.consumer;
 
+import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -33,8 +34,10 @@ public class OpenSearchConsumer {
             while (true) {
                 ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(Duration.ofMillis(5000));
                 for (ConsumerRecord<String, String> consumerRecord : consumerRecords) {
+                    String value = consumerRecord.value();
                     IndexRequest indexRequest = new IndexRequest(index)
-                            .source(consumerRecord.value(), XContentType.JSON);
+                            .id(getMessageId(value))
+                            .source(value, XContentType.JSON);
                     IndexResponse indexResponse = openSearchClient.index(indexRequest, RequestOptions.DEFAULT);
                     log.info("create 1 doc:{}", indexResponse.getId());
                 }
@@ -42,6 +45,15 @@ public class OpenSearchConsumer {
                 TimeUnit.MILLISECONDS.sleep(1500L);
             }
         }
+    }
+
+    private static String getMessageId(String json) {
+        return JsonParser.parseString(json)
+                .getAsJsonObject()
+                .get("meta")
+                .getAsJsonObject()
+                .get("id")
+                .getAsString();
     }
 
     private static KafkaConsumer<String, String> createKafkaConsumer() {
