@@ -41,7 +41,8 @@ public class OpenSearchConsumer {
                     IndexResponse indexResponse = openSearchClient.index(indexRequest, RequestOptions.DEFAULT);
                     log.info("create 1 doc:{}", indexResponse.getId());
                 }
-
+                kafkaConsumer.commitSync();
+                log.info("offset manual committed");
                 TimeUnit.MILLISECONDS.sleep(1500L);
             }
         }
@@ -65,6 +66,7 @@ public class OpenSearchConsumer {
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
         consumer.subscribe(Collections.singletonList(topic));
         return consumer;
